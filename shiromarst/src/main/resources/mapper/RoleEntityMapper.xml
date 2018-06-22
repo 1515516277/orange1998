@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ming.dao.RoleEntityMapper">
+    <select id="selrolebyuid" parameterType="com.ming.entity.RoleEntity" resultType="java.lang.String">
+		select r.role_name from role r  inner JOIN `user` u on u.role=r.id where u.id=#{uid}
+	</select>
+
+    <select id="selpermissionbyuid" parameterType="com.ming.entity.RoleEntity" resultType="java.lang.String">
+		select p.`name` rname  from privilege p inner JOIN privilegerole pr on p.id=pr.privilegeid inner JOIN role r on r.id=pr.roleid inner JOIN `user` u on u.role=r.id where u.id=#{uid}
+	</select>
+</mapper>

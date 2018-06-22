@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ming.dao.UserEntityMapper">
+	<select id="login" parameterType="com.ming.entity.UserEntity" resultType="java.lang.Integer">
+		select count(1) from USER  where username=#{username } and password=#{password}
+	</select>
+	<select id="selbyname" parameterType="com.ming.entity.UserEntity" resultType="com.ming.entity.UserEntity">
+		select id,username,password,role from USER  where username=#{username } order by id limit 1
+	</select>
+	<insert id="adduser" parameterType="com.ming.entity.UserEntity">
+		insert into user(username,password) values (#{username},#{password})
+	</insert>
+</mapper>
